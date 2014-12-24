@@ -9,6 +9,10 @@ Bundler.require(*Rails.groups)
 module RailscastsChina
   class Application < Rails::Application
 
+    #Custom directories with classes and modules want to autoload
+    config.paths.add "app/grape", glob: "**/*.rb"
+    config.autoload_paths += Dir["#{Rails.root}/app/grape/*"]
+
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
       g.helper false

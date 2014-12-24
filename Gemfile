@@ -66,12 +66,10 @@ group :development do
   gem "rails_best_practices"
 end
 
-group :api do
-  gem 'rack-oauth2'
-  gem 'doorkeeper'
-  gem 'grape'
-  gem 'grape-entity'
-end
+gem 'rack-oauth2'
+gem 'doorkeeper'
+gem 'grape', '0.7.0'
+gem 'grape-entity', '0.4.4'
 
 group :test do
   gem "email_spec", ">= 1.2.1"
@@ -83,3 +81,4 @@ gem 'hitimes'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem for Rails 4.1.0
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
+gem 'will_paginate'

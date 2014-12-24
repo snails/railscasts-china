@@ -23,6 +23,7 @@ class EpisodesController < ApplicationController
 
   def create
     @episode = Episode.new(episode_params)
+    @episode.user = current_user
     if @episode.save
       redirect_to @episode, notice: "Episode created successfully."
     else

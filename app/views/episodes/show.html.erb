@@ -28,7 +28,7 @@
       <span class="stats"><%= @episode.minutes %> minutes</span> |
       <span>
         <% @episode.tags.each do |tag| %>
-          <a href="/tags/#{tag.name}/episodes"><%= tag.name %></a>
+          <%= link_to tag.name, "/tags/#{tag.name}/episodes" %>
         <% end %>
       </span>
     </div>

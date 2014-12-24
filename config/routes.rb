@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  require 'api'
+  get 'api' => 'info#api'
+  mount RailsCastsChina::API => '/'
 
   resources :comments
   resources :episodes do
