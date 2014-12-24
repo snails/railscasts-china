@@ -1,22 +1,22 @@
 require 'rbconfig'
 HOST_OS = RbConfig::CONFIG['host_os']
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
 gem 'rails', '~> 4.1.8'
 gem 'mysql2'
 
 # Gems used only for assets and not required
 # in production environments by default.
-gem 'sass-rails',   '~> 4.0'
-gem 'coffee-rails', '~> 4.0'
+gem 'sass-rails'#,   '~> 4.0'
+gem 'coffee-rails'#, '~> 4.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby
 
-gem 'uglifier', '~> 2.1', require: false
+gem 'uglifier', require: false #, '~> 2.1', require: false
 
 gem 'jquery-rails'
-gem "omniauth", ">= 1.1.0"
+gem "omniauth"#, ">= 1.1.0"
 gem "omniauth-github"
 gem "bootstrap-sass", ">= 2.3.2", "< 3.0"
 gem "coderay"
@@ -56,13 +56,20 @@ group :development do
   #  when /linux/i
   #    gem 'libnotify'
   #    gem 'rb-inotify'
-  #  when /mswin|windows/i
+  #  when /mswin|windows/
   #    gem 'rb-fchange'
   #    gem 'win32console'
   #    gem 'rb-notifu'
   # end
   gem "annotate", '~> 2.6.5'
   gem "rails_best_practices"
+end
+
+group :api do
+  gem 'rack-oauth2'
+  gem 'doorkeeper'
+  gem 'grape'
+  gem 'grape-entity'
 end
 
 group :test do
