@@ -79,3 +79,5 @@ db/*.sqlite3
 *.sublime-workspace
 
 config/database.yml
+
+tags

@@ -42,6 +42,9 @@
 <% if @episode.allow_download? -%>
       <a class="btn btn-info" href="<%= @episode.url_for_downloading %>">Download</a>
 <% end -%>
+<% if current_user.admin? -%>
+      <%= link_to 'Edit', edit_episode_path(@episode), class: 'btn btn-warning' %>
+<% end -%>
     </div>
 
     <%= render 'shared/player' %>

@@ -32,7 +32,7 @@ class Episode < ActiveRecord::Base
   paginates_per 10
 
   has_many :comments
-  has_many :taggings
+  has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
   has_many :votes
   belongs_to :user
@@ -100,11 +100,17 @@ class Episode < ActiveRecord::Base
     tags.map(&:name).join(", ")
   end
 
+  #20141224 fix: when tags remove,then the related tagging should also be removed
   def tag_list=(tags_string)
-    tags_string.split(',').each do |tag|
-      tag = tag.strip
-      self.tags << ::Tag.where(name: tag).first_or_create unless self.tags.collect(&:name).include?(tag)
+    old_tags = self.tags
+    new_tags = tags_string.split(',').collect(&:strip)
+    added_tags = new_tags - old_tags
+    self.tags = old_tags & new_tags
+
+    added_tags.each do |tag|
+      self.tags << ::Tag.where(name: tag).first_or_create
     end
+
     self.tags
   end
 

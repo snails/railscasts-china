@@ -3,7 +3,8 @@ HOST_OS = RbConfig::CONFIG['host_os']
 source 'http://ruby.taobao.org'
 
 gem 'rails', '~> 4.1.8'
-gem 'mysql2'
+#gem 'mysql2'
+gem 'sqlite3'
 
 # Gems used only for assets and not required
 # in production environments by default.
